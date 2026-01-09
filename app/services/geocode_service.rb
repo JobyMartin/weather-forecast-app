@@ -18,9 +18,9 @@ class GeocodeService
     request = Net::HTTP::Get.new(url)
     response = http.request(request)
     parsed_data = JSON.parse(response.body, symbolize_names: true)
-    location_results = parsed_data[:results].first
     # Return nil if there aren't results
-    return nil unless location_results
+    return nil if parsed_data[:results].nil? || parsed_data[:results].empty?
+    location_results = parsed_data[:results].first
 
     # Return only latitude and longitude
     {
