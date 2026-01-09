@@ -38,7 +38,7 @@ RSpec.describe WeatherService do
         stub_request(:get, api_url)
           .to_return(status: 200, body: response_forecast)
       end
-    it 'returns a 7 day forcast' do
+    it 'returns a 7 day forecast' do
       result = described_class.get_forecast(latitude, longitude)
       expect(result.length).to eq(7)
     end
