@@ -39,6 +39,9 @@ class WeatherService
 
   # Method to get a 7-day weather forecast with highs, lows, and conditions using Open-Meteo API
   def self.get_forecast(latitude, longitude)
+    # Prevent a bad API result if location is not geocoded correctly
+    return nil if latitude.blank? || longitude.blank?
+
     url = URI("https://api.open-meteo.com/v1/forecast?latitude=#{latitude}&longitude=#{longitude}&daily=temperature_2m_max,temperature_2m_min,weather_code&timezone=auto&wind_speed_unit=mph&temperature_unit=fahrenheit&precipitation_unit=inch")
 
     http = Net::HTTP.new(url.host, url.port)
