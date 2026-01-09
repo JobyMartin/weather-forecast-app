@@ -1,5 +1,11 @@
 <% content_for :title, "New location" %>
 
+<% flash.each do |type, message| %>
+  <p style="color: <%= type == "alert" ? "red" : "green" %>">
+    <%= message %>
+  </p>
+<% end %>
+
 <h1>New location</h1>
 
 <%= render "form", location: @location %>
