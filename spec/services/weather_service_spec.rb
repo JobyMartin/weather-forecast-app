@@ -53,5 +53,14 @@ RSpec.describe WeatherService do
         condition: be_a(String)
       )
     end
+
+    it "returns nil if latitude and/or longitude are empty" do
+      latitude = nil
+      longitude = nil
+
+      result = described_class.get_forecast(latitude, longitude)
+
+      expect(result).to be_nil
+    end
   end
 end
