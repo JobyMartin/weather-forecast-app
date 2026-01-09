@@ -10,6 +10,10 @@ class LocationsController < ApplicationController
   def show
     @location = Location.find(params[:id])
     @forecast = WeatherService.get_forecast(@location.latitude, @location.longitude)
+
+    if @forecast.nil?
+      flash.now[:alert] = "Forecast unavailable for this location."
+    end
   end
 
   # GET /locations/new
@@ -62,11 +66,11 @@ class LocationsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_location
-      @location = Location.find(params.expect(:id))
+      @location = Location.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def location_params
-      params.expect(location: [ :name, :latitude, :longitude ])
+      params.require(:location).permit(:name, :latitude, :longitude)
     end
 end

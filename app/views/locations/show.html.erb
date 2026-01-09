@@ -1,18 +1,29 @@
-<p style="color: green"><%= notice %></p>
+
+<% flash.each do |type, message| %>
+  <p style="color: <%= type == "alert" ? "red" : "green" %>">
+    <%= message %>
+  </p>
+<% end %>
 
 <h2>7 Day Forecast for <%= @location.name %></h2>
 
 <%= render @location %>
 
-<ul>
-  <% @forecast.each do |day| %>
-    <li>
-      <%= day[:date] %> | 
-      <%= day[:condition] %> |
-      High: <%= "#{day[:high].round(0)}" %>°F | Low: <%= "#{day[:low].round(0)}" %>°F
-    </li>
-  <% end %>
-</ul>
+<% if @forecast %>
+  <ul>
+    <% @forecast.each do |day| %>
+      <li>
+        <%= day[:date] %> |
+        <%= day[:condition] %> |
+        High: <%= day[:high].round(0) %>°F |
+        Low: <%= day[:low].round(0) %>°F
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Weather data is unavailable for this location.</p>
+<% end %>
+
 
 <div>
   <%= link_to "Edit this location", edit_location_path(@location) %> |
