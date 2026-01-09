@@ -8,6 +8,8 @@ class LocationsController < ApplicationController
 
   # GET /locations/1 or /locations/1.json
   def show
+    @location = Location.find(params[:id])
+    @forecast = WeatherService.get_forecast(@location.latitude, @location.longitude)
   end
 
   # GET /locations/new

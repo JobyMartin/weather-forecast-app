@@ -1,6 +1,18 @@
 <p style="color: green"><%= notice %></p>
 
+<h2>7 Day Forecast for <%= @location.name %></h2>
+
 <%= render @location %>
+
+<ul>
+  <% @forecast.each do |day| %>
+    <li>
+      <%= day[:date] %> | 
+      <%= day[:condition] %> |
+      High: <%= "#{day[:high].round(0)}" %>°F | Low: <%= "#{day[:low].round(0)}" %>°F
+    </li>
+  <% end %>
+</ul>
 
 <div>
   <%= link_to "Edit this location", edit_location_path(@location) %> |
