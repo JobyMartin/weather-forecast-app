@@ -1,19 +1,27 @@
 <%= form_with(model: location) do |form| %>
-  <% if location.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(location.errors.count, "error") %> prohibited this location from being saved:</h2>
-
-      <ul>
+  <div data-controller="geocode">
+    <% if location.errors.any? %>
+      <div data-geocode-target="alert" class="error" style="color: red">
         <% location.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <%= error.full_message %>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
+      </div>
+    <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <div>
+      <%= form.label :name, style: "display: block" %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div data-geocode-target="latInput">
+      <%= form.label :latitude, style: "display: block" %>
+      <%= form.text_field :latitude %>
+    </div>
+
+    <div data-geocode-target="lonInput">
+      <%= form.label :longitude, style: "display: block" %>
+      <%= form.text_field :longitude %>
+    </div>
   </div>
 
   <div>
