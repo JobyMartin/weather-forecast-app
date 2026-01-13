@@ -11,7 +11,7 @@ RSpec.describe "Viewing a location without coordinates", type: :system do
     visit new_location_path
 
     fill_in "Name", with: "Nowhereville"
-    click_button "Create Location"
+    click_button "Add Location"
 
     # Error is displayed
     expect(page).to have_content('Geocoding failed. Please enter latitude and longitude manually.')

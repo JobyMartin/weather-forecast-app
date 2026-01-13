@@ -1,16 +1,16 @@
 <p style="color: green"><%= notice %></p>
 
-<% content_for :title, "Locations" %>
+<% content_for :title, "Forecast Locations" %>
 
-<h1>Locations</h1>
+<h1>Forecast Locations</h1>
 
-<div id="locations">
+<div class="flex flex-col items-center gap-xxs" id="locations">
   <% @locations.each do |location| %>
     <%= render location %>
     <p>
-      <%= link_to "Show this location", location %>
+      <%= link_to "Show forecast", location, class: "btn margin-xs" %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New location", new_location_path %>
+<%= link_to "New location", new_location_path, class: "btn btn--primary" %>

@@ -1,3 +1,4 @@
+<% content_for :title, "#{@location.name} Forecast" %>
 
 <% flash.each do |type, message| %>
   <p style="color: <%= type == "alert" ? "red" : "green" %>">
@@ -15,8 +16,8 @@
       <li>
         <%= day[:date] %> |
         <%= day[:condition] %> |
-        High: <%= day[:high].round(0) %>°F |
-        Low: <%= day[:low].round(0) %>°F
+        High: <span style="color: var(--op-color-alerts-danger-base)"><%= day[:high].round(0) %>°F</span> |
+        Low: <span style="color: var(--op-color-primary-base)"><%= day[:low].round(0) %>°F</span>
       </li>
     <% end %>
   </ul>
@@ -26,9 +27,12 @@
 
 <%= image_tag @chart_url if @chart_url.present? %>
 
-<div>
-  <%= link_to "Edit this location", edit_location_path(@location) %> |
-  <%= link_to "Back to locations", locations_path %>
+<div class="flex flex-col justify-between items-center margin-xs">
+  <div class="margin-xs">
+    <%= link_to "Edit this location", edit_location_path(@location), class: "btn" %>
+    <%= link_to "Back to locations", locations_path, class: "btn btn--primary" %>
+  </div>
+  
 
-  <%= button_to "Destroy this location", @location, method: :delete %>
+  <%= button_to "Destroy this location", @location, method: :delete, class: "btn btn--destructive" %>
 </div>

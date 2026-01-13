@@ -1,5 +1,5 @@
 <%= form_with(model: location) do |form| %>
-  <div data-controller="geocode">
+  <div class="flex flex-col items-center gap-xs" data-controller="geocode">
     <% if location.errors.any? %>
       <div data-geocode-target="alert" class="error" style="color: red">
         <% location.errors.each do |error| %>
@@ -22,9 +22,9 @@
       <%= form.label :longitude, style: "display: block" %>
       <%= form.text_field :longitude %>
     </div>
-  </div>
 
-  <div>
-    <%= form.submit %>
+    <div>
+      <%= form.submit "Add Location", class: "btn btn--primary margin-xs" %>
+    </div>
   </div>
 <% end %>
