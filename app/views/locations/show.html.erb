@@ -24,6 +24,7 @@
   <p>Weather data is unavailable for this location.</p>
 <% end %>
 
+<%= image_tag @chart_url if @chart_url.present? %>
 
 <div>
   <%= link_to "Edit this location", edit_location_path(@location) %> |

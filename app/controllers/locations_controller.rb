@@ -13,6 +13,8 @@ class LocationsController < ApplicationController
 
     if @forecast.nil?
       flash.now[:alert] = "Forecast unavailable for this location."
+    else
+      @chart_url = ChartService.generate_chart_url(@forecast)
     end
   end
 
