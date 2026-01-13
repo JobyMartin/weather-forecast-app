@@ -31,19 +31,9 @@ class LocationsController < ApplicationController
   def create
     @location = Location.new(location_params)
 
-    coordinates = GeocodeService.geocoder(@location.name)
-
-    if coordinates
-      @location.latitude = coordinates[:latitude]
-      @location.longitude = coordinates[:longitude]
-
-      if @location.save
-        redirect_to @location, notice: "Location was successfully created."
-      else
-        render :new, status: :unprocessable_entity
-      end
+    if @location.save
+      redirect_to @location, notice: "Location was successfully created."
     else
-      flash[:alert] = "Could not find coordinates for this location."
       render :new, status: :unprocessable_entity
     end
   end
