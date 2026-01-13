@@ -1,24 +1,57 @@
-# README
+# Multi-Location Weather Forecasting App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Ruby on Rails application that allows users to create multiple locations, automatically geocode them, and view a 7-day weather forecast with visual charting.
 
-Things you may want to cover:
+---
 
-* Ruby version
+## Prerequisites
 
-* System dependencies
+- Ruby 3.3.4 (Selected for compatibility with the installed gems and local environment.)
+- Rails 8.1.1
+- SQLite (development)
 
-* Configuration
+---
 
-* Database creation
+## Installation
 
-* Database initialization
+1. Clone the repository:
 
-* How to run the test suite
+```bash
+git clone https://github.com/JobyMartin/weather-forecast-app.git
+cd weather-forecast-app
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+2. Install Ruby dependencies:
 
-* Deployment instructions
+`bundle install`
 
-* ...
+3. Set up the database:
+
+`rails db:setup`
+
+4. Start the server:
+
+`rails server`
+
+5. Visit the app at: http://localhost:3000
+
+---
+
+## Usage
+
+- Navigate to the new location page
+- Enter a city or town name (no state required)
+- If the location is recognized by the geocoding API, it will be automiatically geocoded
+- View the 7 day forecast for your entered location
+- Explore the temperature chart for visual insight
+- Create, view, update, and delete locations as desired
+
+## Technologies Used
+
+- Ruby on Rails 8.1.1
+- RSpec and Capybara (system and service tests)
+- Open-Meteo API (weather and geocoding) 
+- Image-Charts (forecast visualization)
+- RoleModel Optics (UI base sytles)
+
+This project uses the RoleModel Optics design system for base styles and layout. Optics is included via CDN for simplicity and to avoid additional build tooling.
