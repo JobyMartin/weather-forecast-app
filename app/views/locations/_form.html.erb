@@ -15,12 +15,20 @@
 
     <div data-geocode-target="latInput">
       <%= form.label :latitude, style: "display: block" %>
-      <%= form.text_field :latitude %>
+      <%= form.number_field :latitude,
+        step: 0.000001,
+        min: -90,
+        max: 90,
+        placeholder: "(-90 to 90)" %>
     </div>
 
     <div data-geocode-target="lonInput">
       <%= form.label :longitude, style: "display: block" %>
-      <%= form.text_field :longitude %>
+      <%= form.number_field :longitude,
+        step: 0.000001,
+        min: -180,
+        max: 180,
+        placeholder: "(-180 to 180)" %>
     </div>
 
     <div>
